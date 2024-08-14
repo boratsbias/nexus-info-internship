@@ -23,7 +23,7 @@ load_dotenv() #loading the dotenv. Used to load the environment variables.
 
 def main():
     #Get the groq api key
-    GROQ_API_KEY = "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"
+    GROQ_API_KEY = "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"
 
     #The title and greeting message
     st.title("Personal Chatbot")
