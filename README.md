@@ -20,6 +20,6 @@ You can engage with the chatbot once it has started operating. When you first en
 
 ## Demo
 
-Simple chatbot - 
+Simple chatbot - https://chatbot-anubrat25.streamlit.app/
 
-Basic Q and A Bot for College Admission - 
+Basic Q and A Bot for College Admission - https://admissionbot-anubrat25.streamlit.app/
