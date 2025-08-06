@@ -1,25 +1,69 @@
-# Project Overview
+# Nexus Info Internship Chatbots
 
-This repository contains two chatbot projects:
+## Overview
 
-1. Simple Chatbot
-This chatbot can carry out simple conversational tasks. It extends greetings, sends farewell notes, and keeps track of past conversations. Despite its inability to comprehend user input, the chatbot is meant to be amiable and respond appropriately.
+This repository contains two Streamlit-based AI chatbots, each designed for different use cases and levels of complexity:
 
-2. College Admission Chatbot
-The purpose of this chatbot is to help people with questions about college entrance. It offers details on requirements, deadlines, and admissions processes based on a PDF file that is submitted. The chatbot allows users to ask several questions in a single session and engages them in a conversational flow. It also keeps track of past conversations for better communication.
+### 1. Admission Chatbot
 
-## Features
+A Retrieval-Augmented Generation (RAG) chatbot that answers questions about admission-related documents (such as a university prospectus). It uses local PDF files, extracts and embeds their content, and provides context-aware answers using a large language model.
 
-- Remembers Previous Chats: In order to deliver more pertinent responses, the chatbot is able to recollect previous exchanges.
- - Kind Responses: To maintain an interesting dialogue, the chatbot will reply kindly when it cannot comprehend the user's input.
- - Greeting and departure: When a user ends a conversation, the chatbot extends a friendly greeting and wishes them a fond departure.
+- **Features:**
 
-## Usage
+  - Answers questions based only on the content of your uploaded PDFs.
+  - Uses local HuggingFace embeddings (no OpenAI or Google API required).
+  - Employs Groq LLM (Llama3-8b-8192) for generating responses.
+  - Vector search is powered by FAISS for efficient retrieval.
+  - Runs locally and privately.
 
-You can engage with the chatbot once it has started operating. When you first engage in discussion, the chatbot will greet you and recall your previous exchanges. Your messages can be typed, and the chatbot will reply appropriately. In the event that it interprets your input incorrectly, it will reply amicably. When you say "goodbye," the chatbot will bid you farewell and stop the conversation. 
+- **Directory:** `admission-chatbot/`
+- **Requirements:** See `admission-chatbot/requirements.txt`
+- **How to run:**
+  1. Place your PDFs in `admission-chatbot/docs/`.
+  2. Add your Groq API key to `admission-chatbot/.env`.
+  3. Install requirements and run:
+     ```bash
+     pip install -r requirements.txt
+     streamlit run main.py
+     ```
 
-## Demo
+---
 
-Simple chatbot - https://chatbot-anubrat25.streamlit.app/
+### 2. Simple Chatbot
 
-Basic Q and A Bot for College Admission - https://admissionbot-anubrat25.streamlit.app/
+A general-purpose conversational AI chatbot that uses Groq LLM for fast, interactive chat. It does not use document retrieval or embeddings, making it lightweight and easy to set up.
+
+- **Features:**
+
+  - General chat and Q&A with an LLM.
+  - Customizable system prompt and model selection via the sidebar.
+  - Maintains conversational memory for context-aware responses.
+  - No document upload or retrieval—pure LLM chat.
+
+- **Directory:** `simple-chatbot/`
+- **Requirements:** See `simple-chatbot/requirements.txt`
+- **How to run:**
+  1. Add your Groq API key to `simple-chatbot/.env`.
+  2. Install requirements and run:
+     ```bash
+     pip install -r requirements.txt
+     streamlit run main.py
+     ```
+
+---
+
+## Requirements
+
+- Python 3.8+
+- A Groq API key (get one from https://console.groq.com/)
+- See each chatbot’s `requirements.txt` for specific dependencies.
+
+## Troubleshooting
+
+- **Missing Groq API key:** Ensure your `.env` file exists and contains the correct key.
+- **Dependency errors:** Run `pip install -r requirements.txt` in the appropriate directory.
+- **Admission Chatbot:** Make sure your PDFs are in the `docs/` directory.
+
+## License
+
+This project is for educational and demonstration purposes. Please check the licenses of all dependencies before using in production.
